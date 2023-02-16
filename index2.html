@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <form onsubmit="sendEmail(); reset(); return false;">
+  <input type="text" id="name" name="name" placeholder="enter name" required><br><br>
+  <input type="email" id="email" name="email" placeholder="yz@example.com" required><br><br>
+  <input type="text" id="subject" name="subject" placeholder="enter subject" required><br><br>
+  <textarea id="message" name="message" rows="4" cols="50" placeholder="how may I help you?" required></textarea><br><br>
+  <input type="hidden" name="_next" value="http://developershubonline.epizy.com/thanks.html">
+  <button type="submit">Submit</button>
+</form>
+</div>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+
+<script>
+	function sendEmail(){
+Email.send({
+    Host : "smtp.elasticemail.com",
+    Username : "developershub42@gmail.com",
+    Password : "DB9E9844FC440810FB6F2DC35DED1CBDF752",
+    To : 'developershub42@gmail.com',
+    From : document.getElementById("email").value,
+    Subject : "order receive",
+    Body : "Name:" + document.getElementById("name").value +
+	"<br> Email:" + document.getElementById("email").value +
+	"<br> Subject:" + document.getElementById("subject").value +
+"<br> Message:" + document.getElementById("message").value
+}).then(
+  message => alert("message sent successfully")
+);
+
+}
+
+</script>
+
+
+
+</body>
+</html>
